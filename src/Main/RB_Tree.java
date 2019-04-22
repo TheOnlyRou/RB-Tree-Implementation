@@ -50,6 +50,7 @@ public class RB_Tree {
             h.right = insert(h.right, key, val);
         else
 <<<<<<< HEAD
+<<<<<<< HEAD
             h.val=val;        
         return h;
     }
@@ -108,10 +109,23 @@ public class RB_Tree {
             flipColors(h);
         }
 >>>>>>> parent of 256eb3e... maroooo
+=======
+            h.val=val; 
+        if(isRed(h.right)&&!isRed(h.left)){
+            h=rotateLeft(h);
+        }
+        if(isRed(h.left)&&isRed(h.left.left)){
+            h=rotateRight(h);
+        }
+        if(isRed(h.left)&&isRed(h.right)){
+            flipColors(h);
+        }
+>>>>>>> parent of 1327ccf... Merge pull request #5 from Mohamed-Agwa/patch-2
         h.size = size(h.left) + size(h.right) + 1;
         
         return h;
     }
+<<<<<<< HEAD
 <<<<<<< HEAD
     
     private Node rotateRight(Node h) {
@@ -123,6 +137,8 @@ public class RB_Tree {
         x.size = h.size;
         h.size = size(h.left) + size(h.right) + 1;
 =======
+=======
+>>>>>>> parent of 1327ccf... Merge pull request #5 from Mohamed-Agwa/patch-2
     public Node rotateLeft(Node h){
         Node x=h.right;
         h.right=x.left;
@@ -131,7 +147,10 @@ public class RB_Tree {
         x.left.color=RED;
         x.size=h.size;
         h.size=size(h.left)+size(h.right)+1;
+<<<<<<< HEAD
 >>>>>>> parent of 256eb3e... maroooo
+=======
+>>>>>>> parent of 1327ccf... Merge pull request #5 from Mohamed-Agwa/patch-2
         return x;
     }
     public Node rotateRight(Node h){
@@ -172,6 +191,7 @@ public class RB_Tree {
         else
             h.val=val;        
         return h;
+<<<<<<< HEAD
 <<<<<<< HEAD
     }
  public boolean isEmpty() {
@@ -264,4 +284,7 @@ public class RB_Tree {
 =======
     }    
 >>>>>>> parent of 256eb3e... maroooo
+=======
+    }    
+>>>>>>> parent of 1327ccf... Merge pull request #5 from Mohamed-Agwa/patch-2
 }
