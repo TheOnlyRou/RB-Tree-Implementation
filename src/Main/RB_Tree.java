@@ -14,6 +14,16 @@ public class RB_Tree {
         return x.color==RED;
     }
     
+    public int size(Node x){
+        if(x==null)
+            return 0;
+        return x.size;
+    }
+    
+    public boolean isEmpty(){
+        return root==null;
+    }
+    
     public float generateKey(String val)
     {
         float key = 0;
