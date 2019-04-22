@@ -14,18 +14,21 @@ public class Node implements Comparable{
     private static final boolean RED   = true;
     private static final boolean BLACK = false;
     
-    public Node (int key,String val,boolean color,int size){
+    public Node (int key,String val,boolean color){
         this.key=key;
         this.val=val;
         this.color=color;
-        this.size=size;
     }
 
     @Override
     public int compareTo(Object t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int key = (int)t;
+        if(key == this.key)
+            return 0;
+        else if(key > this.key)
+            return 1;
+        else 
+            return -1;
     }
-    
-            
-    
+
 }

@@ -5,14 +5,21 @@
  */
 package Main;
 
-/**
- *
- * @author user
- */
+    
+
 public class Program {
     
+    Dictionary d = new Dictionary();
     
-        public static void main(String args[]) {
-            
+    private void exportDictionary(GUI gui)
+    {
+        gui.importDictionary(d);
+    }
+    
+    public static void main(String args[]) {
+        Program m = new Program();
+        GUI gui = new GUI();
+        gui.setVisible(true);
+        m.exportDictionary(gui);
     }
 }

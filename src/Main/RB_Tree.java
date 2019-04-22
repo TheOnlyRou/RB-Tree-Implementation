@@ -13,32 +13,26 @@ public class RB_Tree {
     }
     public void insert(int key,String val){
         if(val==null){
-            delete(key);
             return;
         }
         root=insert(root,key,val);
-        root.color=BLACK;
-            
-        
+        root.color=BLACK;        
     }
+    
+    
     public Node insert(Node h,int key,String val){
-        if(h==null){
-            return new Node(key,val,RED,1);
-        }
-        int cmp=key.compareTo(h.key);
-        if(cmp<0){
+        if(h==null)
+            return new Node(key,val,RED);
+        
+        int cmp= h.compareTo(key);
+        
+        if(cmp<0)
             h.left=insert(h.left,key,val);
-        }
-        else if(cmp>0){
+        else if(cmp>0)
             h.right = insert(h.right, key, val);
-        }
         else
-            h.val=val;
-        }
+            h.val=val;        
         return h;
     }
-    
-
-    
-    
+     
 }
