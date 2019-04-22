@@ -49,7 +49,14 @@ public class RB_Tree {
         else if(cmp>0)
             h.right = insert(h.right, key, val);
         else
-            h.val=val;        
+            h.val=val;
+        if (isRed(h.right) && !isRed(h.left))
+            h=rotateLeft(h);
+        if (isRed(h.left)  &&  isRed(h.left.left))
+            h=rotateRight(h);
+        if (isRed(h.left)  &&  isRed(h.right))
+            flipColors(h);
+        h.size=size(h.left)+size(h.right);
         return h;
     }
 
@@ -102,4 +109,30 @@ public class RB_Tree {
             h.val=val;        
         return h;
     }
+    private Node rotateRight(Node h) {
+        Node x = h.left;
+        h.left = x.right;
+        x.right = h;
+        x.color = x.right.color;
+        x.right.color = RED;
+        x.size = h.size;
+        h.size = size(h.left) + size(h.right) + 1;
+        return x;
+    }
+    private Node rotateLeft(Node h) {
+        Node x = h.right;
+        h.right = x.left;
+        x.left = h;
+        x.color = x.left.color;
+        x.left.color = RED;
+        x.size = h.size;
+        h.size = size(h.left) + size(h.right) + 1;
+        return x;
+    }
+    private void flipColors(Node h) {
+        h.color = !h.color;
+        h.left.color = !h.left.color;
+        h.right.color = !h.right.color;
+    }
+    
 }
