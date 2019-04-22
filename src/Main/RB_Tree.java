@@ -28,6 +28,57 @@ public class RB_Tree {
         return key;
     }    
     
+        public Node insert(Node h,int key,String val){
+        if(h==null)
+            return new Node(key,val,RED);
+        
+        int cmp= h.compareTo(key);
+        
+        if(cmp<0)
+            h.left=insert(h.left,key,val);
+        else if(cmp>0)
+            h.right = insert(h.right, key, val);
+        else
+            h.val=val; 
+        if(isRed(h.right)&&!isRed(h.left)){
+            h=rotateLeft(h);
+        }
+        if(isRed(h.left)&&isRed(h.left.left)){
+            h=rotateRight(h);
+        }
+        if(isRed(h.left)&&isRed(h.right)){
+            flipColors(h);
+        }
+        h.size = size(h.left) + size(h.right) + 1;
+        
+        return h;
+    }
+    public Node rotateLeft(Node h){
+        Node x=h.right;
+        h.right=x.left;
+        x.left=h;
+        x.color=x.left.color;
+        x.left.color=RED;
+        x.size=h.size;
+        h.size=size(h.left)+size(h.right)+1;
+        return x;
+    }
+    public Node rotateRight(Node h){
+        Node x=h.left;
+        h.left=x.right;
+        x.right=h;
+        x.color=x.right.color;
+        x.right.color=RED;
+        x.size=h.size;
+        h.size=size(h.left)+size(h.right);
+        return x;
+    }
+    public void flipColors(Node h){
+        h.color=!h.color;
+        h.left.color=!h.left.color;
+        h.right.color=!h.right.color;
+    }
+    
     public void insert(String val){
         if(val==null){
             return;
