@@ -21,10 +21,11 @@ public class RB_Tree {
     public boolean isEmpty(){
         return root==null;
     }
-    public void insert(int key,String val){
+    public void insert(String val){
         if(val==null){
             return;
         }
+        float key = generateKey(val);
         root=insert(root,key,val);
         root.color=BLACK;        
     }
@@ -43,7 +44,7 @@ public class RB_Tree {
         return key;
     } 
     
-    public Node insert(Node h,int key,String val){
+    public Node insert(Node h, float key,String val){
         if(h==null)
             return new Node(key,val,RED);
         
@@ -75,7 +76,7 @@ public class RB_Tree {
         x.color=x.left.color;
         x.left.color=RED;
         x.size=h.size;
-        h.size=size(h.left)+size(h.right)+1;
+        h.size=size(h.left)+size(h.right) + 1;
         return x;
     }
     public Node rotateRight(Node h){
@@ -85,7 +86,7 @@ public class RB_Tree {
         x.color=x.right.color;
         x.right.color=RED;
         x.size=h.size;
-        h.size=size(h.left)+size(h.right);
+        h.size = size(h.left) + size(h.right) + 1;
         return x;
     }
     public void flipColors(Node h){
