@@ -2,7 +2,6 @@ package Main;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -19,6 +18,7 @@ import java.io.IOException;
 public class Dictionary {
     
     private File f;
+    public RB_Tree rb_tree = new RB_Tree();
     
     public void importFile(File f) throws IOException
     {

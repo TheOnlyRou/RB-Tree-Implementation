@@ -9,12 +9,12 @@ public class Node implements Comparable{
     String val ;
     boolean color;
     int size;
-    int key;
+    float key;
     
     private static final boolean RED   = true;
     private static final boolean BLACK = false;
     
-    public Node (int key,String val,boolean color){
+    public Node (float key,String val,boolean color){
         this.key=key;
         this.val=val;
         this.color=color;
@@ -30,5 +30,4 @@ public class Node implements Comparable{
         else 
             return -1;
     }
-
 }

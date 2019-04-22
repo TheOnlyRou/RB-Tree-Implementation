@@ -20,5 +20,6 @@ public class Program {
     public static void main(String args[]) {
         Program m = new Program();        
         m.exportDictionary();
+        m.d.rb_tree.generateKey("Bob");
     }
 }

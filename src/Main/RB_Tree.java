@@ -1,5 +1,7 @@
 package Main;
 
+import static java.lang.Math.pow;
+
 
 public class RB_Tree {
     public Node root;
@@ -11,16 +13,31 @@ public class RB_Tree {
             return false;
         return x.color==RED;
     }
-    public void insert(int key,String val){
+    
+    public float generateKey(String val)
+    {
+        float key = 0;
+        val = val.toUpperCase();
+        char[] arr = val.toCharArray();
+        for(int i=0; i<val.length();i++)
+        {
+            System.out.println(arr[i]);
+            key += arr[i]/pow(10,2*i);
+        }
+        System.out.println(key);
+        return key;
+    }    
+    
+    public void insert(String val){
         if(val==null){
             return;
         }
+        float key = generateKey(val);
         root=insert(root,key,val);
         root.color=BLACK;        
     }
     
-    
-    public Node insert(Node h,int key,String val){
+    public Node insert(Node h, float key, String val){
         if(h==null)
             return new Node(key,val,RED);
         
@@ -33,6 +50,5 @@ public class RB_Tree {
         else
             h.val=val;        
         return h;
-    }
-     
+    }    
 }
