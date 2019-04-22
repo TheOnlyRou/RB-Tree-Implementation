@@ -101,13 +101,13 @@ public class GUI extends javax.swing.JFrame {
         File f = chooser.getSelectedFile();
         if(f != null)
         {
-        String filename = f.getAbsolutePath();
-        jLabel3.setText("Dictionary Status: LOADED");
-        jLabel3.setForeground(Color.GREEN);
-        jTextField1.setEditable(true);
-        jLabel5.setText(filename);
-        try {
-            d.importFile(f);
+            String filename = f.getAbsolutePath();
+            jLabel3.setText("Dictionary Status: LOADED");
+            jLabel3.setForeground(Color.GREEN);
+            jTextField1.setEditable(true);
+            jLabel5.setText(filename);
+            try {
+                d.importFile(f);
         } catch (IOException ex) {
             Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
         }
