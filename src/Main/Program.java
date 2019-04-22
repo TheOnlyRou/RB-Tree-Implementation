@@ -10,16 +10,15 @@ package Main;
 public class Program {
     
     Dictionary d = new Dictionary();
+    GUI gui = new GUI();
     
-    private void exportDictionary(GUI gui)
+    private void exportDictionary()
     {
-        gui.importDictionary(d);
+        this.gui.importDictionary(d);
     }
     
     public static void main(String args[]) {
-        Program m = new Program();
-        GUI gui = new GUI();
-        gui.setVisible(true);
-        m.exportDictionary(gui);
+        Program m = new Program();        
+        m.exportDictionary();
     }
 }
