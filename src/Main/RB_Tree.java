@@ -50,9 +50,8 @@ public class RB_Tree {
         // assert check();
     }
  
-    // delete the key-String pair with the given key rooted at h
     private Node delete(Node h, float key) {
-        if (key.compareTo(h.key) < 0)  {
+        if (h.compareTo(key) < 0)  {
             if (!isRed(h.left) && !isRed(h.left.left))
                 h = moveRedLeft(h);
             h.left = delete(h.left, key);
@@ -60,11 +59,11 @@ public class RB_Tree {
         else {
             if (isRed(h.left))
                 h = rotateRight(h);
-            if (key.compareTo(h.key) == 0 && (h.right == null))
+            if (h.compareTo(key) == 0 && (h.right == null))
                 return null;
             if (!isRed(h.right) && !isRed(h.right.left))
                 h = moveRedRight(h);
-            if (key.compareTo(h.key) == 0) {
+            if (h.compareTo(key) == 0) {
                 Node x = min(h.right);
                 h.key = x.key;
                 h.val = x.val;
@@ -74,7 +73,8 @@ public class RB_Tree {
         }
         return balance(h);
     }
-     private Node balance(Node h) {
+    
+    private Node balance(Node h) {
  
         if (isRed(h.right))                      h = rotateLeft(h);
         if (isRed(h.left) && isRed(h.left.left)) h = rotateRight(h);
@@ -83,7 +83,8 @@ public class RB_Tree {
         h.size = size(h.left) + size(h.right) + 1;
         return h;
     }
-   private Node rotateRight(Node h) {
+    
+    private Node rotateRight(Node h) {
         Node x = h.left;
         h.left = x.right;
         x.right = h;
@@ -205,15 +206,13 @@ public class RB_Tree {
         return get(root, key);
     }
  
-    // String associated with the given key in subtree rooted at x; null if no such key
     private String get(Node x, float key) {
         while (x != null) {
-            int cmp = key.compareTo(x.key);
+            int cmp = x.compareTo(key);
             if      (cmp < 0) x = x.left;
             else if (cmp > 0) x = x.right;
             else              return x.val;
         }
         return null;
     }
- 
 }

@@ -33,7 +33,4 @@ public class Dictionary {
         while ((st = br.readLine()) != null) 
             System.out.println(st); 
     }
-    
-    
-    
 }

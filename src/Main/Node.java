@@ -22,7 +22,7 @@ public class Node implements Comparable{
 
     @Override
     public int compareTo(Object t) {
-        int key = (int)t;
+        float key = (float)t;
         if(key == this.key)
             return 0;
         else if(key > this.key)
