@@ -94,7 +94,43 @@ public class RB_Tree {
         h.left.color=!h.left.color;
         h.right.color=!h.right.color;
     }
-    public Node search(String inp){
-        
+   public String search(String inp){
+        if(inp==null){
+            throw new IllegalArgumentException("argument to get() is null");
+        }
+        float key=generateKey(inp);
+        String result=searchK(root,key);
+        return result;
+    }
+    public String searchK(Node x,float key){
+        while(x!=null){
+            int cmp=key.compareTo(x.key);
+            if(cmp<0){
+                x=x.left;
+            }
+            else if(cmp>0){
+                x=x.right;
+            }
+            else{
+                return x.val;
+            }
+        }
+        return null;
+    }
+    public Node moveRedLeft(Node h){
+        flipColors(h);
+        if(isRed(h.right.left)){
+            h.right=rotateRight(h.right);
+            h=rotateLeft(h);
+            flipColors(h);
+        }
+        return h;
+    }
+    public Node moveRedRight(Node h){
+        flipColors(h);
+        if(isRed(h.left.left)){
+            h=rotateRight(h);
+            flipColors(h);
+        }
     }
 }
