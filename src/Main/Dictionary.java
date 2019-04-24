@@ -33,4 +33,13 @@ public class Dictionary {
         while ((st = br.readLine()) != null) 
             System.out.println(st); 
     }
+    public void insertD(){
+        String st = null;
+        rb_tree.insert(st);
+        
+    }
+    public void searchD(){
+        String st = null;
+        rb_tree.search(st);
+    }
 }
