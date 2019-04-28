@@ -104,7 +104,7 @@ public class RB_Tree {
     }
     public String searchK(Node x,float key){
         while(x!=null){
-            int cmp=key.compareTo(x.key);
+            int cmp = x.compareTo(key);
             if(cmp<0){
                 x=x.left;
             }
@@ -132,5 +132,6 @@ public class RB_Tree {
             h=rotateRight(h);
             flipColors(h);
         }
+        return h;
     }
 }
